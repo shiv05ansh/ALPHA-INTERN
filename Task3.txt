@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Spotify -me</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+body{
+    background: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sidebar{
+    width: 300px;
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 8px;
+   
+
+}
+.sidebar-nav{
+    background-color: rgb(21, 20, 20);
+    border-radius: 10px;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+.sidebar-nav .logo{
+    width: 120px;
+} .sidebar-nav .logo img{
+    width: 100px;
+}
+.sidebar-nav ul{
+    list-style: none;
+    
+}.sidebar-nav ul li{
+    list-style: none;
+    padding: 10px 20px;
+} 
+.sidebar-nav ul li a:hover{
+    text-decoration: underline;
+    color: blanchedalmond;
+} 
+.sidebar-nav ul li a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 600;
+}.sidebar-nav ul li a i{
+    font-size: 20px;
+    margin-left: 10px;
+
+}
+.Library::after{
+    content: "+";
+    float: right;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 16px;
+
+}
+.create-playlist{
+    background:rgb(61, 59, 59);
+    padding: 30px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+.sidebar-scroll{
+    height: 120px;
+    overflow-y: auto;
+}
+.sidebar-scroll::-webkit-scrollbar{
+    background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb{
+    background: transparent;
+    width: 10px;
+} .sidebar-scroll:hover::-webkit-scrollbar-thumb{
+    background:rgb(99, 94, 94);
+    width: 5px;
+}.create-playlist h4{
+    color: white;
+    font-size: 15px;
+}.create-playlist p{
+    color: white;
+    font-size: 12px;
+    margin: 12px 0;
+}.create-playlist button{
+    padding: 8px 15px;
+    border: 0;
+    outline: 0;
+    border-radius: 20px;
+    font-weight: 600;
+}
+.privacy ul li a{
+    text-decoration: none;
+    color: rgb(139, 136, 131);
+    font-size: 12px;
+    margin: 0 6px;
+
+} .privacy ul{
+    padding: bottom 5px;
+    margin-top: 20px;
+}
+.privacy ul li{
+    padding: 0 12px;
+    padding-bottom: 8px;
+}
+.privacy ul li a:hover{
+    text-decoration: underline;
+    color: white;
+} .eng-btn{
+    padding: 20px 30px;
+    
+
+}
+.eng-btn button{
+    padding: 10px 30px;
+   border-radius: 20px;
+ margin: 20px 0;
+    border: 0;
+    outline: none;
+    color: white;
+    background: transparent;
+border: 1px solid white;
+}
+.eng-btn button:hover{
+    padding: 11px 31px;
+    border: 1px solid white;
+}
+.main-section{
+    margin-left:  300px;
+    background:rgb(27, 26, 26) ;
+    height: 100vh;
+    overflow: auto;
+}
+.main-section .top-nav{
+    padding: 20px 30px;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+}  .main-section .top-nav button{
+    background: transparent;
+    border: 0;
+    outline: 0;
+
+}
+.main-section .top-nav .prev-btn button i{
+   color: rgb(81, 75, 75);
+ font-size: 22px; 
+ margin-right: 10px;   
+}
+.top-nav .login-btn .Sign-up{
+    color: rgb(195, 191, 191);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 25px;
+
+}
+ .top-nav .login-btn .Sign-up:hover{
+    color: rgb(255, 255, 255);
+    
+    
+}
+.top-nav .login-btn .Login{
+    color: rgb(21, 19, 19);
+    font-size: 15px;
+    font-weight: 600;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+.top-nav .login-btn  .Login:hover{
+    background: rgb(114, 109, 109);
+
+}
+.spotify-playlist{
+    padding: 20px 40px;
+} .spotify-playlist h2{
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.spotify-playlist .card{
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+}
+.spotify-playlist .card .item{
+    width: 220px;
+    min-width: 140px;
+    background-color: rgb(74, 72, 72);
+    cursor: pointer;
+    padding: 15px;
+     border-radius: 6px;
+}
+.spotify-playlist .card .item:hover{
+    background: rgb(137, 128, 128);
+    
+}
+.spotify-playlist .card .item img{
+    width: 100px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+.spotify-playlist .item h4{
+     color: white;
+
+} .spotify-playlist .item p{
+    color: white;
+    margin-top: 13px;
+    font-size: 13px;
+
+}.spotify-playlist .item p:hover{
+    color: rgb(14, 13, 13);
+    text-decoration: underline;
+    
+} .spotify-playlist .play-btn{
+    position: relative;
+}
+.spotify-playlist .play-btn i{
+    position: absolute;
+    padding: 10px;
+    border-radius: 50% ;
+    background: rgb(12, 176, 12);
+    right: 8px;
+    top: -40px;
+    opacity: 0;
+    transition: 0.3ss ease all;
+}
+.spotify-playlist .card .item:hover .play-btn i{
+ transform: translateY(-20px);
+    opacity: 1;
+}
+.footer-section{
+    padding: 20px 40px;
+}
+.footer-section .footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}.footer-section .footer .footer-links{
+    display: flex;
+    justify-content: space-between;
+   gap:50px
+
+    
+}.footer-section .footer .footer-links .footer-column{
+    margin: 0 12px;
+   
+    
+}
+.footer-section footer .footer-links div{
+    color: white;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 16px;
+
+}
+.footer-section .footer .footer-links ul li{
+    list-style: none;
+    margin: 6px 0;
+  }
+  .footer-section .footer .footer-links ul li a{
+    text-decoration: none ;
+    color: rgb(222, 210, 210);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .footer-section .footer .footer-links ul li a:hover{
+    color:white;
+    text-decoration: underline;
+  }
+  .footer-section .footer .footer-column div{
+    color: white;
+    font-size: 2vh;
+
+  }
+  .footer-section .footer .footer-column div:hover{
+    color: rgb(109, 65, 65);
+    font-size: 3vh;
+    text-decoration:dotted;
+    
+  }
+  .footer .social-links i{
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 0 5px;
+    background: rgb(111, 108, 108);
+    border-radius: 25px;
+  }
+  .footer .social-links i:hover{
+    text-decoration: dotted;
+    background: rgb(199, 188, 188);
+
+  }
+  hr{
+    margin: 20px 40px;
+    border: 0;
+    outline: 0;
+   
+    border: 1px solid grey;
+  }
+  .copyright{
+    padding: 0 40px;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 15px ;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+    
+ <div class="sidebar">
+    <div class="sidebar-nav">
+        <div class="logo">
+            <a href=""><image src="logo-new.png" alt=""></image></a>
+        </div>
+        <ul>
+            <li><a href="">
+                <span><i class="fa-solid fa-house"></i></span>
+                <span>Home</span>
+            </a></li>
+            <li><a href="">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span>Search</span>
+            </a></li>
+        </ul>
+    </div>
+    <div class="sidebar-nav box2">
+        
+        <ul>
+            <li><a href="">
+                <span><i class="fa-solid fa-book"></i></span>
+                <span class="Library">Your Library</span>
+            </a></li>
+            <li>
+                <div class="sidebar-scroll">
+                    <div class="create-playlist">
+                        <h4>Create your first playlist</h4>
+                        <p>It's easy, we'll help you</p>
+                        <button>Create Playlist</button>
+                    </div>
+                    <div class="sidebar-scroll">
+                        <div class="create-playlist">
+                            <h4>Let's find some podcast to follow.</h4>
+                            <p>We'll keep you update on new episodes</p>
+                            <button>Browse podcast</button>
+                        </div>
+                    </div>
+                </li>
+        </ul>
+        <div class="privacy">
+            <ul>
+                <li>
+                    <a href="">Legal</a>
+                    <a href="">Safety & Privacy</a>
+                    <a href=" ">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="">Cookies</a>
+                        <a href="">About Ads</a>
+                        <a href="">Accesibilty</a>
+
+                </li>
+                <li>
+                    <a href="">Cookies</a>
+                    
+            </li>
+            </ul>
+          </div>
+          <div class="eng-btn">
+            <button>English</button>
+          </div>
+
+    </div>
+
+        
+    
+ </div>
+ ....main section starts
+    <div class="main-section">
+            <div class="top-nav">
+            <div class="prev-btn">
+                <button><i class="fa-solid fa-chevron-left"></i></button>
+                <button><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        <div class="login-btn">
+            <button class="Sign-up"> Sign-up</button>
+            <button class="Login"> Login</button>
+
+
+        </div>
+    </div>
+    <div class="spotify-playlist">
+        <h2>Popular Album</h2>
+        <div class="card">
+        <div class="item">
+            <img src="item-6.jpg" alt="">
+            <div class="play-btn">
+                <span><i class="fa-solid fa-play"></i></span>
+            </div>
+            <h4>ANIMAL</h4>
+            <p>Manan Bhardwaj,Vishal Mishra,Janni</p>
+        </div>
+
+        <div class="item">
+            <img src="item-10.jpg" alt="">
+            <div class="play-btn">
+                <span><i class="fa-solid fa-play"></i></span>
+            </div>
+            <h4>Satranga</h4>
+            <p>Arijit Singh,Shreyas,Puranik</p>
+        </div>
+        
+        <div class="item">
+            <img src="item-7.jpg" alt="">
+            <div class="play-btn">
+                <span><i class="fa-solid fa-play"></i></span>
+            </div>
+            <h4>Still Rollin</h4>
+            <p>Shubh</p>
+        </div>
+        
+        <div class="item">
+            <img src="item-8.jpg" alt="">
+            <div class="play-btn">
+                <span><i class="fa-solid fa-play"></i></span>
+            </div>
+            <h4>Husn</h4>
+            <p>Anuv Jain</p>
+        </div>
+        
+        <div class="item">
+            <img src="item-9.jpg" alt="">
+            <div class="play-btn">
+                <span><i class="fa-solid fa-play"></i></span>
+            </div>
+            <h4>Moosetape</h4>
+            <p>Sidhu Moose Wala</p>
+        </div>
+      </div>
+    </div>
+<div class="spotify-playlist">
+    <h2>Trending Songs</h2>
+    <div class="card">
+    <div class="item">
+        <img src="item-1.jpg" alt="">
+        <div class="play-btn">
+            <span><i class="fa-solid fa-play"></i></span>
+        </div>
+        <h4>Lofi Beats</h4>
+        <p>TrendingBeats</p>
+    </div>
+
+    <div class="item">
+        <img src="item-2.jpg" alt="">
+        <div class="play-btn">
+            <span><i class="fa-solid fa-play"></i></span>
+        </div>
+        <h4>Today Top Hits</h4>
+        <p>Arijit Singh,Shreyas,Puranik</p>
+    </div>
+    
+    <div class="item">
+        <img src="item-3.jpg" alt="">
+        <div class="play-btn">
+            <span><i class="fa-solid fa-play"></i></span>
+        </div>
+        <h4>Chillout Lounge</h4>
+        <p>Made for you</p>
+    </div>
+    
+    <div class="item">
+        <img src="item-4.jpg" alt="">
+        <div class="play-btn">
+            <span><i class="fa-solid fa-play"></i></span>
+        </div>
+        <h4>All Out 2020's</h4>
+        <p>Rema,Selema Gomez,Bensoon Boone</p>
+    </div>
+    
+    <div class="item">
+        <img src="item-5.jpg" alt="">
+        <div class="play-btn">
+            <span><i class="fa-solid fa-play"></i></span>
+        </div>
+        <h4>Jazzy Mood</h4>
+        <p>Chilling Songs</p>
+    </div>
+    </div>
+    <div class="footer-section">
+        <div class="footer">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <div>Company</div>
+                    <ul class="col-links">
+                        <li><a href="">About</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">For the Record </a></li>
+                        
+                     </ul>
+                </div>
+                <div class="footer-column">
+                    <div>Communities</div>
+                    <ul class="col-links">
+                        <li><a href="">For Aristis</a></li>
+                        <li><a href="">Developers</a></li>
+                        <li><a href=""> Advertising </a></li>
+                        <li><a href=""> Investors </a></li>
+                        <li><a href=""> Vendors </a></li>
+                        
+                        
+                        
+            
+                    </ul>
+                </div><div class="footer-column">
+                    <div>Useful Links</div>
+                    <ul class="col-links">
+                        <li><a href="">Support</a></li>
+                        <li><a href="">Free Mobile App</a></li>
+                       
+                        
+                        
+            
+                    </ul>
+                </div>
+            </div>
+            <div class="social-links">
+                <div>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <hr>
+    <div>
+        <p class="copyright">  &COPY;2024 Spotify AB</p>
+    </div>
+   </div>
+   </body>
+   </html>
