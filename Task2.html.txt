@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Bliss</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        nav ul li {
+            margin-left: 1rem;
+        }
+        
+        nav ul a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul a:hover {
+            color: #ff6347;
+        }
+        
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger-menu span {
+            height: 2px;
+            width: 25px;
+            background-color: #fff;
+            margin-bottom: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+        
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 122px);
+            background-image: url("https://images.unsplash.com/photo-1511920170033-f8396924c348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGNvZmZlZXxlbnwwfHx8fDE2MjM1MTkwNTY&ixlib=rb-1.2.1&q=80&w=1080");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .hero .container {
+            max-width: 600px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            background-color: #ff6347;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e5533d;
+        }
+        
+        .content {
+            padding: 2rem 0;
+        }
+        
+        .content h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .menu-items {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .menu-item {
+            flex: 1 1 calc(25% - 1rem);
+            margin: 0.5rem;
+            text-align: center;
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .menu-item h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .menu-item p {
+            font-size: 0.875rem;
+            color: #555;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Coffee Code</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Coffee Code Bro</h2>
+            <p>Your perfect cup of coffee awaits</p>
+            <a href="#" class="btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://media.istockphoto.com/id/1126871442/photo/coffee-cup.jpg?s=612x612&w=0&k=20&c=Jp8v8YqgT9ws-lMN6qiMZmpp5rGlsBpaRCeMS_DmzKs=" alt="Espresso">
+                    <h3>Espresso</h3>
+                    <p>A strong and bold coffee shot.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://media.istockphoto.com/id/505168330/photo/cup-of-cafe-latte-with-coffee-beans-and-cinnamon-sticks.jpg?s=612x612&w=0&k=20&c=h7v8kAfWOpRapv6hrDwmmB54DqrGQWxlhP_mTeqTQPA=" alt="Cappuccino">
+                    <h3>Cappuccino</h3>
+                    <p>A perfect blend of espresso, steamed milk, and foam.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Perfect_caffe_latte_from_Cafe_Coffee_Day.jpg/640px-Perfect_caffe_latte_from_Cafe_Coffee_Day.jpg" alt="Latte">
+                    <h3>Latte</h3>
+                    <p>Smooth and creamy espresso with steamed milk.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ6_3YsWp2IGxEMYHOKpz2VqvFN7HIqeBm4w&s" alt="Mocha">
+                    <h3>Mocha</h3>
+                    <p>Chocolate flavored coffee with steamed milk and whipped cream.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Coffee Bliss. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const navUl = document.querySelector('header nav ul');
+
+            hamburgerMenu.addEventListener('click', () => {
+                navUl.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
